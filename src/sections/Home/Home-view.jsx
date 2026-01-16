@@ -4,9 +4,9 @@ import React from 'react';
 import { Box } from '@mui/material';
 import Navbar from './Navbar';
 import HeroSection from './HeroSection';
-// import FeaturesSection from './FeatureSection';
+import FeaturesSection from './FeatureSection';
 import AboutSection from './AboutSection';
-// import ContactSection from './ContactSection';
+import ContactSection from './ContactSection';
 import Footer from './Footer';
 
 export default function HomeView() {
@@ -14,9 +14,9 @@ export default function HomeView() {
     <Box>
       <Navbar />
       <HeroSection />
-      {/* <FeaturesSection /> */}
+      <FeaturesSection />
       <AboutSection />
-      {/* <ContactSection /> */}
+      <ContactSection />
       <Footer />
     </Box>
   );
