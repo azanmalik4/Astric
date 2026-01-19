@@ -1,16 +1,17 @@
 import React from 'react';
 import {
   Box,
-  Container,
-  Typography,
-  Button,
+  Chip,
+  alpha,
   Stack,
   Avatar,
+  Button,
+  Container,
+  Typography,
   AvatarGroup,
-  Chip,
 } from '@mui/material';
 import { Icon } from '@iconify/react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';  
 
 export default function HeroSection() {
   const navigate = useNavigate();
@@ -29,73 +30,113 @@ export default function HeroSection() {
         py: { xs: 8, md: 12 },
       }}
     >
-      {/* Animated Background Elements */}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          opacity: 0.03,
+          backgroundImage: `repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 35px,
+            rgba(255,165,0,0.4) 35px,
+            rgba(255,165,0,0.4) 70px
+          )`,
+        }}
+      />
+      <Box
+        sx={{
+          position: 'absolute',
+          top: '15%',
+          left: '8%',
+          width: 60,
+          height: 60,
+          animation: 'float 8s ease-in-out infinite',
+          '@keyframes float': {
+            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+            '50%': { transform: 'translateY(-20px) rotate(10deg)' },
+          },
+        }}
+      >
+        <Icon icon="mdi:hammer-wrench" width="60" style={{ color: '#ff9800', opacity: 0.2 }} />
+      </Box>
+
+      <Box
+        sx={{
+          position: 'absolute',
+          top: '60%',
+          left: '5%',
+          width: 50,
+          height: 50,
+          animation: 'float 10s ease-in-out infinite',
+          animationDelay: '2s',
+        }}
+      >
+        <Icon icon="mdi:excavator" width="50" style={{ color: '#ffc107', opacity: 0.2 }} />
+      </Box>
+
+      <Box
+        sx={{
+          position: 'absolute',
+          top: '30%',
+          right: '10%',
+          width: 70,
+          height: 70,
+          animation: 'float 9s ease-in-out infinite',
+          animationDelay: '1s',
+        }}
+      >
+        <Icon icon="mdi:crane" width="70" style={{ color: '#ff9800', opacity: 0.15 }} />
+      </Box>
+
+      <Box
+        sx={{
+          position: 'absolute',
+          bottom: '20%',
+          right: '12%',
+          width: 55,
+          height: 55,
+          animation: 'float 11s ease-in-out infinite',
+          animationDelay: '3s',
+        }}
+      >
+        <Icon icon="mdi:hard-hat" width="55" style={{ color: '#ffc107', opacity: 0.2 }} />
+      </Box>
+
+      {/* Glowing Orbs - Construction Colors */}
       <Box
         sx={{
           position: 'absolute',
           top: '10%',
-          left: '5%',
-          width: 20,
-          height: 20,
+          right: '15%',
+          width: 300,
+          height: 300,
           borderRadius: '50%',
-          bgcolor: '#ff6b6b',
-          animation: 'float 6s ease-in-out infinite',
-          '@keyframes float': {
-            '0%, 100%': { transform: 'translateY(0px)' },
-            '50%': { transform: 'translateY(-20px)' },
+          background: 'radial-gradient(circle, rgba(0,212,170,0.15) 0%, transparent 70%)',
+          filter: 'blur(60px)',
+          animation: 'pulse 4s ease-in-out infinite',
+          '@keyframes pulse': {
+            '0%, 100%': { opacity: 0.5, transform: 'scale(1)' },
+            '50%': { opacity: 0.8, transform: 'scale(1.1)' },
           },
         }}
       />
+
       <Box
         sx={{
           position: 'absolute',
-          top: '70%',
-          left: '8%',
-          width: 16,
-          height: 16,
+          bottom: '10%',
+          left: '10%',
+          width: 350,
+          height: 350,
           borderRadius: '50%',
-          bgcolor: '#ffd93d',
-          animation: 'float 8s ease-in-out infinite',
+          background: 'radial-gradient(circle, rgba(96,165,250,0.12) 0%, transparent 70%)',
+          filter: 'blur(80px)',
+          animation: 'pulse 5s ease-in-out infinite',
           animationDelay: '1s',
-        }}
-      />
-      <Box
-        sx={{
-          position: 'absolute',
-          top: '25%',
-          right: '10%',
-          width: 24,
-          height: 24,
-          borderRadius: '50%',
-          bgcolor: '#a78bfa',
-          animation: 'float 7s ease-in-out infinite',
-          animationDelay: '2s',
-        }}
-      />
-      <Box
-        sx={{
-          position: 'absolute',
-          bottom: '15%',
-          right: '15%',
-          width: 18,
-          height: 18,
-          borderRadius: '50%',
-          bgcolor: '#4ade80',
-          animation: 'float 9s ease-in-out infinite',
-          animationDelay: '0.5s',
-        }}
-      />
-      <Box
-        sx={{
-          position: 'absolute',
-          bottom: '60%',
-          right: '5%',
-          width: 14,
-          height: 14,
-          borderRadius: '50%',
-          bgcolor: '#60a5fa',
-          animation: 'float 10s ease-in-out infinite',
-          animationDelay: '3s',
         }}
       />
 
@@ -107,11 +148,27 @@ export default function HeroSection() {
             zIndex: 1,
           }}
         >
+          {/* Construction Badge */}
+          <Chip
+            icon={<Icon icon="mdi:factory" width="18" />}
+            label="Construction Asset Management"
+            sx={{
+              mb: 3,
+              bgcolor: alpha('#00d4aa', 0.15),
+              color: '#00d4aa',
+              border: `1px solid ${alpha('#00d4aa', 0.3)}`,
+              fontWeight: 600,
+              fontSize: '0.875rem',
+              '& .MuiChip-icon': {
+                color: '#ff9800',
+              },
+            }}
+          />
           <Typography
             variant="h1"
             sx={{
               fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4.5rem', lg: '5.5rem' },
-              fontWeight: 800,
+              fontWeight: 700,
               lineHeight: 1.1,
               mb: 3,
               letterSpacing: '-2px',
@@ -127,30 +184,27 @@ export default function HeroSection() {
             <Box
               component="span"
               sx={{
-                color: '#3b82f6',
+                background: 'linear-gradient(135deg, #00d4aa 0%, #60a5fa 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
                 position: 'relative',
                 display: 'inline-block',
               }}
             >
               Astaric
+              {/* Underline decoration */}
+              <Box
+                sx={{
+                  position: 'absolute',
+                  bottom: -8,
+                  left: 0,
+                  right: 0,
+                  height: 4,
+                  background: 'linear-gradient(135deg, #00d4aa 0%, #60a5fa 100%)',
+                  borderRadius: 2,
+                }}
+              />
             </Box>
-          </Typography>
-
-          {/* Subtitle */}
-          <Typography
-            variant="h6"
-            sx={{
-              color: 'rgba(255,255,255,0.6)',
-              fontSize: { xs: '1rem', md: '1.25rem' },
-              maxWidth: '900px',
-              mx: 'auto',
-              mb: 1,
-              fontWeight: 400,
-              lineHeight: 1.6,
-            }}
-          >
-            Astaric is a smart fixed-asset management platform designed by ITG specifically for
-            construction
           </Typography>
           <Typography
             variant="h6"
@@ -159,15 +213,30 @@ export default function HeroSection() {
               fontSize: { xs: '1rem', md: '1.25rem' },
               maxWidth: '850px',
               mx: 'auto',
+              mb: 1,
+              fontWeight: 400,
+              lineHeight: 1.6,
+            }}
+          >
+            Astaric is a smart fixed-asset management platform designed by ITG specifically for
+
+          </Typography>
+          <Typography
+            variant="h6"
+            sx={{
+              color: 'rgba(255,255,255,0.6)',
+              fontSize: { xs: '1rem', md: '1.25rem' },
+              maxWidth: '800px',
+              mx: 'auto',
               mb: 5,
               fontWeight: 400,
               lineHeight: 1.6,
             }}
           >
-             companies, where assets constantly move across sites, teams, and projects.
+           construction companies,where assets constantly move across sites, teams, and projects.
           </Typography>
 
-          {/* Happy Customers */}
+          {/* Happy Customers with Construction Theme */}
           <Box
             sx={{
               display: 'flex',
@@ -188,22 +257,39 @@ export default function HeroSection() {
                 },
               }}
             >
-              <Avatar sx={{ bgcolor: '#ff6b6b' }}>JD</Avatar>
-              <Avatar sx={{ bgcolor: '#4ade80' }}>AS</Avatar>
-              <Avatar sx={{ bgcolor: '#60a5fa' }}>MK</Avatar>
+              <Avatar sx={{ bgcolor: '#00d4aa' }}>
+                <Icon icon="mdi:account-hard-hat" width="24" />
+              </Avatar>
+              <Avatar sx={{ bgcolor: '#60a5fa' }}>
+                <Icon icon="mdi:engineer" width="24" />
+              </Avatar>
+              <Avatar sx={{ bgcolor: '#4ade80' }}>
+                <Icon icon="mdi:account-tie" width="24" />
+              </Avatar>
             </AvatarGroup>
-            <Typography
-              variant="body2"
-              sx={{
-                color: 'rgba(255,255,255,0.7)',
-                fontWeight: 500,
-              }}
-            >
-              160+ Happy customers
-            </Typography>
+            <Box sx={{ textAlign: 'left' }}>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: '#fff',
+                  fontWeight: 600,
+                  lineHeight: 1.2,
+                }}
+              >
+                160+ Happy customers
+              </Typography>
+              <Typography
+                variant="caption"
+                sx={{
+                  color: 'rgba(255,255,255,0.5)',
+                }}
+              >
+                Construction companies worldwide
+              </Typography>
+            </Box>
           </Box>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - Construction Themed */}
           <Stack
             direction={{ xs: 'column', sm: 'row' }}
             spacing={2}
@@ -213,82 +299,89 @@ export default function HeroSection() {
             <Button
               variant="contained"
               size="large"
-              startIcon={<Icon icon="mdi:lightning-bolt" width="20" />}
+              startIcon={<Icon icon="mdi:rocket-launch" width="22" />}
               onClick={() => navigate('auth/jwt/login')}
               sx={{
-                bgcolor: '#fff',
-                color: '#1a1d29',
-                px: 4,
-                py: 1.5,
-                fontSize: '1rem',
+                background: 'linear-gradient(135deg, #00d4aa 0%, #60a5fa 100%)',
+                color: '#fff',
+                px: 5,
+                py: 1.8,
+                fontSize: '1.05rem',
                 fontWeight: 600,
                 borderRadius: 2,
                 textTransform: 'none',
-                boxShadow: '0 8px 24px rgba(255,255,255,0.15)',
+                boxShadow: '0 8px 32px rgba(0,212,170,0.35)',
+                border: 'none',
                 '&:hover': {
-                  bgcolor: '#f0f0f0',
                   transform: 'translateY(-2px)',
-                  boxShadow: '0 12px 28px rgba(255,255,255,0.2)',
+                  background: 'linear-gradient(135deg, #60a5fa 0%, #00d4aa 100%)',
+                  boxShadow: '0 12px 40px rgba(0,212,170,0.45)',
                 },
                 transition: 'all 0.3s ease',
               }}
             >
-              <Box>
-                Live preview
-                <Typography
-                  variant="caption"
-                  sx={{
-                    display: 'block',
-                    fontSize: '0.7rem',
-                    opacity: 0.6,
-                  }}
-                >
-                  v7.6.1
-                </Typography>
-              </Box>
+              Get Started Free
             </Button>
             <Button
               variant="outlined"
               size="large"
-              startIcon={<Icon icon="mdi:vector-square" width="20" />}
+              startIcon={<Icon icon="mdi:play-circle" width="22" />}
+              onClick={() => {
+                const element = document.getElementById('features');
+                element?.scrollIntoView({ behavior: 'smooth' });
+              }}
               sx={{
-                borderColor: 'rgba(255,255,255,0.2)',
-                color: '#fff',
-                px: 4,
-                py: 1.5,
-                fontSize: '1rem',
+                borderColor: '#00d4aa',
+                borderWidth: 2,
+                color: '#00d4aa',
+                px: 5,
+                py: 1.8,
+                fontSize: '1.05rem',
                 fontWeight: 600,
                 borderRadius: 2,
                 textTransform: 'none',
                 '&:hover': {
-                  borderColor: 'rgba(255,255,255,0.4)',
-                  bgcolor: 'rgba(255,255,255,0.05)',
+                  borderWidth: 2,
+                  borderColor: '#00d4aa',
+                  bgcolor: alpha('#00d4aa', 0.1),
                   transform: 'translateY(-2px)',
                 },
                 transition: 'all 0.3s ease',
               }}
             >
-              Figma preview
+              Watch Demo
             </Button>
           </Stack>
-
-          {/* Try Free Version Link */}
-          <Button
-            startIcon={<Icon icon="mdi:open-in-new" width="16" />}
+          <Box
             sx={{
-              color: 'rgba(255,255,255,0.5)',
-              textTransform: 'none',
-              fontSize: '0.9rem',
-              '&:hover': {
-                color: '#3b82f6',
-                bgcolor: 'transparent',
-              },
+              display: 'flex',
+              flexDirection: { xs: 'column', sm: 'row' },
+              gap: { xs: 2, sm: 4 },
+              justifyContent: 'center',
+              alignItems: 'center',
+              mb: 8,
             }}
           >
-            Try free version
-          </Button>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <Icon icon="mdi:shield-check" width="24" style={{ color: '#4ade80' }} />
+              <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.7)' }}>
+                ISO Certified
+              </Typography>
+            </Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <Icon icon="mdi:chart-line" width="24" style={{ color: '#60a5fa' }} />
+              <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.7)' }}>
+                98% Accuracy Rate
+              </Typography>
+            </Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <Icon icon="mdi:account-group" width="24" style={{ color: '#a78bfa' }} />
+              <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.7)' }}>
+                24/7 Support
+              </Typography>
+            </Box>
+          </Box>
 
-          {/* Available For */}
           <Box sx={{ mt: 8 }}>
             <Typography
               variant="caption"
@@ -302,18 +395,21 @@ export default function HeroSection() {
                 display: 'block',
               }}
             >
-              Available For
+              Trusted By Industry Leaders
             </Typography>
             <Stack
               direction="row"
               spacing={3}
               justifyContent="center"
+              flexWrap="wrap"
               sx={{
+                gap: 2,
                 '& .MuiChip-root': {
-                  bgcolor: 'rgba(255,255,255,0.05)',
-                  border: '1px solid rgba(255,255,255,0.1)',
+                  bgcolor: 'rgba(0,212,170,0.08)',
+                  border: '1px solid rgba(0,212,170,0.2)',
                   '&:hover': {
-                    bgcolor: 'rgba(255,255,255,0.08)',
+                    bgcolor: 'rgba(0,212,170,0.15)',
+                    borderColor: '#00d4aa',
                     transform: 'translateY(-2px)',
                   },
                   transition: 'all 0.3s ease',
@@ -321,28 +417,23 @@ export default function HeroSection() {
               }}
             >
               <Chip
-                icon={<Icon icon="logos:javascript" width="20" />}
-                label="JS"
+                icon={<Icon icon="mdi:office-building" width="20" style={{ color: '#00d4aa' }} />}
+                label="Large Enterprises"
                 sx={{ color: 'rgba(255,255,255,0.8)' }}
               />
               <Chip
-                icon={<Icon icon="logos:typescript-icon" width="20" />}
-                label="TS"
+                icon={<Icon icon="mdi:account-hard-hat" width="20" style={{ color: '#00d4aa' }} />}
+                label="Contractors"
                 sx={{ color: 'rgba(255,255,255,0.8)' }}
               />
               <Chip
-                icon={<Icon icon="logos:nextjs-icon" width="20" />}
-                label="Next"
+                icon={<Icon icon="mdi:factory" width="20" style={{ color: '#00d4aa' }} />}
+                label="Site Managers"
                 sx={{ color: 'rgba(255,255,255,0.8)' }}
               />
               <Chip
-                icon={<Icon icon="logos:vitejs" width="20" />}
-                label="Vite"
-                sx={{ color: 'rgba(255,255,255,0.8)' }}
-              />
-              <Chip
-                icon={<Icon icon="logos:figma" width="20" />}
-                label="Figma"
+                icon={<Icon icon="mdi:briefcase" width="20" style={{ color: '#00d4aa' }} />}
+                label="Project Teams"
                 sx={{ color: 'rgba(255,255,255,0.8)' }}
               />
             </Stack>

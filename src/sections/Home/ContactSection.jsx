@@ -170,11 +170,7 @@ export default function ContactSection() {
                     minHeight: 56,
                   }}
                 >
-                  <Icon
-                    icon={item.icon}
-                    width="24"
-                    style={{ color: item.color }}
-                  />
+                  <Icon icon={item.icon} width="24" style={{ color: item.color }} />
                 </Box>
                 <Box sx={{ flex: 1 }}>
                   <Typography

@@ -84,8 +84,8 @@ export default function Footer() {
                   mb: 3,
                 }}
               >
-                Smart fixed-asset management platform designed for construction
-                companies. Built by ITG.
+                Smart fixed-asset management platform designed for construction companies. Built by
+                ITG.
               </Typography>
               <Stack direction="row" spacing={1}>
                 {socialLinks.map((social, index) => (
@@ -113,11 +113,7 @@ export default function Footer() {
 
           {/* Company Links */}
           <Grid item xs={6} md={2.5}>
-            <Typography
-              variant="subtitle1"
-              fontWeight="bold"
-              sx={{ mb: 2, color: '#fff' }}
-            >
+            <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 2, color: '#fff' }}>
               Company
             </Typography>
             <Stack spacing={1.5}>
@@ -144,11 +140,7 @@ export default function Footer() {
 
           {/* Resources Links */}
           <Grid item xs={6} md={2.5}>
-            <Typography
-              variant="subtitle1"
-              fontWeight="bold"
-              sx={{ mb: 2, color: '#fff' }}
-            >
+            <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 2, color: '#fff' }}>
               Resources
             </Typography>
             <Stack spacing={1.5}>
@@ -175,50 +167,25 @@ export default function Footer() {
 
           {/* Contact Info */}
           <Grid item xs={12} md={3}>
-            <Typography
-              variant="subtitle1"
-              fontWeight="bold"
-              sx={{ mb: 2, color: '#fff' }}
-            >
+            <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 2, color: '#fff' }}>
               Contact
             </Typography>
             <Stack spacing={2}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                <Icon
-                  icon="mdi:email"
-                  width="18"
-                  style={{ color: '#3b82f6' }}
-                />
-                <Typography
-                  variant="body2"
-                  sx={{ color: 'rgba(255,255,255,0.6)' }}
-                >
+                <Icon icon="mdi:email" width="18" style={{ color: '#3b82f6' }} />
+                <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.6)' }}>
                   info@itgllc.ae
                 </Typography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                <Icon
-                  icon="mdi:phone"
-                  width="18"
-                  style={{ color: '#3b82f6' }}
-                />
-                <Typography
-                  variant="body2"
-                  sx={{ color: 'rgba(255,255,255,0.6)' }}
-                >
+                <Icon icon="mdi:phone" width="18" style={{ color: '#3b82f6' }} />
+                <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.6)' }}>
                   +971 56 863 8858
                 </Typography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                <Icon
-                  icon="mdi:web"
-                  width="18"
-                  style={{ color: '#3b82f6' }}
-                />
-                <Typography
-                  variant="body2"
-                  sx={{ color: 'rgba(255,255,255,0.6)' }}
-                >
+                <Icon icon="mdi:web" width="18" style={{ color: '#3b82f6' }} />
+                <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.6)' }}>
                   www.itgllc.ae
                 </Typography>
               </Box>
@@ -238,10 +205,7 @@ export default function Footer() {
             gap: 2,
           }}
         >
-          <Typography
-            variant="body2"
-            sx={{ color: 'rgba(255,255,255,0.5)' }}
-          >
+          <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.5)' }}>
             © {new Date().getFullYear()} Astaric by ITG. All rights reserved.
           </Typography>
           <Stack direction="row" spacing={3}>

@@ -3,16 +3,7 @@
 // ============================================
 
 import React from 'react';
-import {
-  Box,
-  Container,
-  Typography,
-  Grid,
-  Card,
-  CardContent,
-  Paper,
-  alpha,
-} from '@mui/material';
+import { Box, Container, Typography, Grid, Card, CardContent, Paper, alpha } from '@mui/material';
 import { Icon } from '@iconify/react';
 
 const features = [
@@ -40,8 +31,7 @@ const features = [
   {
     icon: 'mdi:shield-check',
     title: 'Audit Trail',
-    description:
-      'Complete asset history capturing movements, assignments, and value changes.',
+    description: 'Complete asset history capturing movements, assignments, and value changes.',
     color: '#4ade80',
   },
   {
@@ -54,8 +44,7 @@ const features = [
   {
     icon: 'mdi:lock-check',
     title: 'Access Control',
-    description:
-      'Secure access for Head Office, Site Management, and View-Only stakeholders.',
+    description: 'Secure access for Head Office, Site Management, and View-Only stakeholders.',
     color: '#ff6b6b',
   },
 ];
@@ -166,11 +155,7 @@ export default function FeaturesSection() {
                       flexShrink: 0,
                     }}
                   >
-                    <Icon
-                      icon="mdi:check-circle"
-                      width="24"
-                      style={{ color: '#3b82f6' }}
-                    />
+                    <Icon icon="mdi:check-circle" width="24" style={{ color: '#3b82f6' }} />
                   </Box>
                   <Typography
                     variant="body1"
@@ -249,7 +234,10 @@ export default function FeaturesSection() {
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    background: `radial-gradient(circle at top left, ${alpha(feature.color, 0.1)} 0%, transparent 60%)`,
+                    background: `radial-gradient(circle at top left, ${alpha(
+                      feature.color,
+                      0.1
+                    )} 0%, transparent 60%)`,
                     opacity: 0,
                     transition: 'opacity 0.4s ease',
                   },
@@ -283,11 +271,7 @@ export default function FeaturesSection() {
                       border: `1px solid ${alpha(feature.color, 0.2)}`,
                     }}
                   >
-                    <Icon
-                      icon={feature.icon}
-                      width="32"
-                      style={{ color: feature.color }}
-                    />
+                    <Icon icon={feature.icon} width="32" style={{ color: feature.color }} />
                   </Box>
                   <Typography
                     variant="h6"

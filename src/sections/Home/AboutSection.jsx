@@ -122,17 +122,9 @@ export default function AboutSection() {
                     border: `1px solid ${alpha('#3b82f6', 0.2)}`,
                   }}
                 >
-                  <Icon
-                    icon="mdi:information"
-                    width="28"
-                    style={{ color: '#3b82f6' }}
-                  />
+                  <Icon icon="mdi:information" width="28" style={{ color: '#3b82f6' }} />
                 </Box>
-                <Typography
-                  variant="h5"
-                  fontWeight="bold"
-                  sx={{ color: '#fff' }}
-                >
+                <Typography variant="h5" fontWeight="bold" sx={{ color: '#fff' }}>
                   Who We Are
                 </Typography>
               </Box>
@@ -146,10 +138,9 @@ export default function AboutSection() {
                   fontSize: '1.05rem',
                 }}
               >
-                Astaric is a smart fixed-asset management platform designed by ITG
-                specifically for construction companies. We understand that in
-                construction, assets are constantly on the move across different sites,
-                teams, and projects.
+                Astaric is a smart fixed-asset management platform designed by ITG specifically for
+                construction companies. We understand that in construction, assets are constantly on
+                the move across different sites, teams, and projects.
               </Typography>
               <Typography
                 variant="body1"
@@ -159,9 +150,8 @@ export default function AboutSection() {
                   fontSize: '1.05rem',
                 }}
               >
-                Our platform provides real-time visibility, control, and compliance for
-                all your fixed assets, ensuring nothing gets lost and everything is
-                optimally utilized.
+                Our platform provides real-time visibility, control, and compliance for all your
+                fixed assets, ensuring nothing gets lost and everything is optimally utilized.
               </Typography>
             </Box>
           </Grid>
@@ -198,17 +188,9 @@ export default function AboutSection() {
                     border: `1px solid ${alpha('#60a5fa', 0.2)}`,
                   }}
                 >
-                  <Icon
-                    icon="mdi:cog"
-                    width="28"
-                    style={{ color: '#60a5fa' }}
-                  />
+                  <Icon icon="mdi:cog" width="28" style={{ color: '#60a5fa' }} />
                 </Box>
-                <Typography
-                  variant="h5"
-                  fontWeight="bold"
-                  sx={{ color: '#fff' }}
-                >
+                <Typography variant="h5" fontWeight="bold" sx={{ color: '#fff' }}>
                   How It Works
                 </Typography>
               </Box>
