@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useMemo, useEffect, useCallback } from 'react';
 import { createTheme, ThemeProvider as MuiThemeProvider } from '@mui/material';
 import PropTypes from 'prop-types';
+// import { fontSize } from '@mui/system';
 
 const ThemeContext = createContext();
 
@@ -18,6 +19,7 @@ export function ThemeProvider({ children }) {
   const [direction, setDirection] = useState('ltr');
   const [layout, setLayout] = useState('vertical');
   const [colorPreset, setColorPreset] = useState('blue');
+  const [fontSize, setFontSize] = useState(60);
 
   useEffect(() => {
     const savedMode = localStorage.getItem('themeMode');
@@ -25,12 +27,14 @@ export function ThemeProvider({ children }) {
     const savedDirection = localStorage.getItem('themeDirection');
     const savedLayout = localStorage.getItem('themeLayout');
     const savedColorPreset = localStorage.getItem('themeColorPreset');
+     const savedFontSize = localStorage.getItem('themeFontSize');
 
     if (savedMode) setMode(savedMode);
     if (savedContrast) setContrast(savedContrast);
     if (savedDirection) setDirection(savedDirection);
     if (savedLayout) setLayout(savedLayout);
     if (savedColorPreset) setColorPreset(savedColorPreset);
+    if (savedFontSize) setFontSize(Number(savedFontSize));
   }, []);
 
   useEffect(() => {
@@ -39,7 +43,8 @@ export function ThemeProvider({ children }) {
     localStorage.setItem('themeDirection', direction);
     localStorage.setItem('themeLayout', layout);
     localStorage.setItem('themeColorPreset', colorPreset);
-  }, [mode, contrast, direction, layout, colorPreset]);
+    localStorage.setItem('themeFontSize', fontSize.toString());
+  }, [mode, contrast, direction, layout, colorPreset, fontSize]);
 
   const colorPresets = useMemo(
     () => ({
@@ -67,13 +72,62 @@ export function ThemeProvider({ children }) {
             primary: mode === 'light' ? '#1e293b' : '#ffffff',
             secondary: mode === 'light' ? 'rgba(0,0,0,0.7)' : 'rgba(255,255,255,0.7)',
           },
+          // ADD THIS - Contrast colors
+          ...(contrast === 'bold' && {
+            background: {
+              default: mode === 'light' ? '#f0f0f0' : '#0a0d14',
+              paper: mode === 'light' ? '#e5e5e5' : '#151820',
+            },
+            text: {
+              primary: mode === 'light' ? '#000000' : '#ffffff',
+              secondary: mode === 'light' ? 'rgba(0,0,0,0.9)' : 'rgba(255,255,255,0.9)',
+            },
+          }),
         },
-        direction,
+        direction, // This enables RTL
         typography: {
           fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+          // ADD THIS - Dynamic font sizes
+          fontSize: 14, // Base font size
+          h1: { fontSize: `${3.5 + (fontSize - 16) * 0.1}rem` },
+          h2: { fontSize: `${3 + (fontSize - 16) * 0.08}rem` },
+          h3: { fontSize: `${2.5 + (fontSize - 16) * 0.07}rem` },
+          h4: { fontSize: `${2 + (fontSize - 16) * 0.06}rem` },
+          h5: { fontSize: `${1.5 + (fontSize - 16) * 0.05}rem` },
+          h6: { fontSize: `${1.25 + (fontSize - 16) * 0.04}rem` },
+          body1: { fontSize: `${1 + (fontSize - 16) * 0.03}rem` },
+          body2: { fontSize: `${0.875 + (fontSize - 16) * 0.02}rem` },
+          button: { fontSize: `${0.875 + (fontSize - 16) * 0.02}rem` },
+          caption: { fontSize: `${0.75 + (fontSize - 16) * 0.015}rem` },
+        },
+        components: {
+          MuiCssBaseline: {
+            styleOverrides: {
+              body: {
+                // ADD THIS - Apply font size to body
+                fontSize: `${fontSize}px`,
+                scrollbarColor: mode === 'light' ? '#888 #f1f1f1' : '#555 #2b2b2b',
+                '&::-webkit-scrollbar, & *::-webkit-scrollbar': {
+                  width: 8,
+                  height: 8,
+                },
+                '&::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb': {
+                  borderRadius: 8,
+                  backgroundColor: mode === 'light' ? '#888' : '#555',
+                  minHeight: 24,
+                },
+                '&::-webkit-scrollbar-thumb:hover, & *::-webkit-scrollbar-thumb:hover': {
+                  backgroundColor: mode === 'light' ? '#555' : '#888',
+                },
+                '&::-webkit-scrollbar-track, & *::-webkit-scrollbar-track': {
+                  backgroundColor: mode === 'light' ? '#f1f1f1' : '#2b2b2b',
+                },
+              },
+            },
+          },
         },
       }),
-    [mode, direction, colorPreset, colorPresets]
+    [mode, fontSize, contrast, direction, colorPreset, colorPresets]
   );
 
   const toggleMode = useCallback(() => {
@@ -95,7 +149,9 @@ export function ThemeProvider({ children }) {
       direction,
       layout,
       colorPreset,
+      fontSize,
       setMode,
+      setFontSize,
       setContrast,
       setDirection,
       setLayout,
@@ -110,6 +166,7 @@ export function ThemeProvider({ children }) {
       contrast,
       direction,
       layout,
+      fontSize,
       colorPreset,
       toggleMode,
       toggleContrast,

@@ -22,6 +22,8 @@ export default function SettingsDrawer({ open, onClose }) {
     contrast,
     direction,
     layout,
+    fontSize,
+    setFontSize,
     colorPreset,
     toggleMode,
     toggleContrast,
@@ -32,7 +34,6 @@ export default function SettingsDrawer({ open, onClose }) {
   } = useThemeSettings();
 
 
-  const [fontSize, setFontSize] = React.useState(16);
 
   const layoutOptions = [
     { value: 'vertical', icon: 'mdi:page-layout-sidebar-left', label: 'Vertical' },
@@ -99,9 +100,7 @@ export default function SettingsDrawer({ open, onClose }) {
               >
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <Icon icon="mdi:white-balance-sunny" width="20" />
-                  <Typography variant="body2">
-                    {mode === 'light' ? 'Light' : 'Dark'}
-                  </Typography>
+                  <Typography variant="body2">{mode === 'light' ? 'Light' : 'Dark'}</Typography>
                 </Box>
                 <Switch checked={mode === 'dark'} onChange={toggleMode} />
               </Paper>
@@ -165,8 +164,7 @@ export default function SettingsDrawer({ open, onClose }) {
                         cursor: 'pointer',
                         textAlign: 'center',
                         border: 2,
-                        borderColor:
-                          layout === option.value ? 'primary.main' : 'transparent',
+                        borderColor: layout === option.value ? 'primary.main' : 'transparent',
                         bgcolor: mode === 'light' ? 'grey.100' : 'grey.900',
                         transition: 'all 0.2s',
                         '&:hover': {
@@ -206,8 +204,7 @@ export default function SettingsDrawer({ open, onClose }) {
                         alignItems: 'center',
                         gap: 1.5,
                         border: 2,
-                        borderColor:
-                          colorPreset === preset.name ? preset.value : 'transparent',
+                        borderColor: colorPreset === preset.name ? preset.value : 'transparent',
                         bgcolor: mode === 'light' ? 'grey.100' : 'grey.900',
                         transition: 'all 0.2s',
                         '&:hover': {
@@ -265,11 +262,9 @@ export default function SettingsDrawer({ open, onClose }) {
         </Box>
       </Box>
     </Drawer>
-
   );
 }
 SettingsDrawer.propTypes = {
   open: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
 };
-
