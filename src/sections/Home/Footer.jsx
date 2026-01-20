@@ -1,10 +1,21 @@
 import React from 'react';
-import { Box, Container, Typography, Grid, Stack, IconButton, Divider, alpha } from '@mui/material';
+import {
+  Box,
+  Container,
+  Typography,
+  Grid,
+  Stack,
+  IconButton,
+  Divider,
+  alpha,
+  useTheme,
+} from '@mui/material';
 import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Footer() {
   const navigate = useNavigate();
+  const theme = useTheme();
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -27,24 +38,22 @@ export default function Footer() {
   };
 
   const socialLinks = [
-    { icon: 'mdi:facebook', url: '#', color: '#1877f2' },
-    { icon: 'mdi:twitter', url: '#', color: '#1da1f2' },
-    { icon: 'mdi:linkedin', url: '#', color: '#0a66c2' },
-    { icon: 'mdi:github', url: '#', color: '#ffffff' },
+    { icon: 'mdi:facebook', url: '#' },
+    { icon: 'mdi:twitter', url: '#' },
+    { icon: 'mdi:linkedin', url: '#' },
+    { icon: 'mdi:github', url: '#' },
   ];
 
   return (
     <Box
       sx={{
-        bgcolor: '#0f1117',
-        color: 'white',
+        bgcolor: theme.palette.mode === 'light' ? 'grey.100' : 'background.paper',
+        color: 'text.primary',
         pt: 8,
         pb: 4,
         position: 'relative',
-        overflow: 'hidden',
       }}
     >
-      {/* Background Gradient */}
       <Box
         sx={{
           position: 'absolute',
@@ -53,19 +62,18 @@ export default function Footer() {
           transform: 'translateX(-50%)',
           width: '100%',
           height: '2px',
-          background: 'linear-gradient(90deg, transparent 0%, #3b82f6 50%, transparent 100%)',
+          background: `linear-gradient(90deg, transparent 0%, ${theme.palette.primary.main} 50%, transparent 100%)`,
         }}
       />
 
       <Container maxWidth="lg">
         <Grid container spacing={4} sx={{ mb: 6 }}>
-          {/* Brand Section */}
           <Grid item xs={12} md={4}>
             <Box sx={{ mb: 3 }}>
               <Typography
                 variant="h5"
                 sx={{
-                  color: '#3b82f6',
+                  color: 'primary.main',
                   fontWeight: 700,
                   mb: 1,
                   display: 'flex',
@@ -79,7 +87,7 @@ export default function Footer() {
               <Typography
                 variant="body2"
                 sx={{
-                  color: 'rgba(255,255,255,0.6)',
+                  color: 'text.secondary',
                   lineHeight: 1.7,
                   mb: 3,
                 }}
@@ -92,13 +100,14 @@ export default function Footer() {
                   <IconButton
                     key={index}
                     sx={{
-                      color: 'rgba(255,255,255,0.5)',
-                      bgcolor: 'rgba(255,255,255,0.05)',
-                      border: '1px solid rgba(255,255,255,0.1)',
+                      color: 'text.secondary',
+                      bgcolor: alpha(theme.palette.primary.main, 0.05),
+                      border: 1,
+                      borderColor: 'divider',
                       '&:hover': {
-                        color: social.color,
-                        bgcolor: alpha(social.color, 0.1),
-                        borderColor: alpha(social.color, 0.3),
+                        color: 'primary.main',
+                        bgcolor: alpha(theme.palette.primary.main, 0.1),
+                        borderColor: 'primary.main',
                         transform: 'translateY(-2px)',
                       },
                       transition: 'all 0.3s ease',
@@ -111,9 +120,8 @@ export default function Footer() {
             </Box>
           </Grid>
 
-          {/* Company Links */}
           <Grid item xs={6} md={2.5}>
-            <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 2, color: '#fff' }}>
+            <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 2, color: 'text.primary' }}>
               Company
             </Typography>
             <Stack spacing={1.5}>
@@ -123,11 +131,11 @@ export default function Footer() {
                   variant="body2"
                   onClick={link.action}
                   sx={{
-                    color: 'rgba(255,255,255,0.6)',
+                    color: 'text.secondary',
                     cursor: 'pointer',
                     transition: 'all 0.3s ease',
                     '&:hover': {
-                      color: '#3b82f6',
+                      color: 'primary.main',
                       transform: 'translateX(4px)',
                     },
                   }}
@@ -138,9 +146,8 @@ export default function Footer() {
             </Stack>
           </Grid>
 
-          {/* Resources Links */}
           <Grid item xs={6} md={2.5}>
-            <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 2, color: '#fff' }}>
+            <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 2, color: 'text.primary' }}>
               Resources
             </Typography>
             <Stack spacing={1.5}>
@@ -150,11 +157,11 @@ export default function Footer() {
                   variant="body2"
                   onClick={link.action}
                   sx={{
-                    color: 'rgba(255,255,255,0.6)',
+                    color: 'text.secondary',
                     cursor: 'pointer',
                     transition: 'all 0.3s ease',
                     '&:hover': {
-                      color: '#3b82f6',
+                      color: 'primary.main',
                       transform: 'translateX(4px)',
                     },
                   }}
@@ -165,27 +172,26 @@ export default function Footer() {
             </Stack>
           </Grid>
 
-          {/* Contact Info */}
           <Grid item xs={12} md={3}>
-            <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 2, color: '#fff' }}>
+            <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 2, color: 'text.primary' }}>
               Contact
             </Typography>
             <Stack spacing={2}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                <Icon icon="mdi:email" width="18" style={{ color: '#3b82f6' }} />
-                <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.6)' }}>
+                <Icon icon="mdi:email" width="18" color={theme.palette.primary.main} />
+                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                   info@itgllc.ae
                 </Typography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                <Icon icon="mdi:phone" width="18" style={{ color: '#3b82f6' }} />
-                <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.6)' }}>
+                <Icon icon="mdi:phone" width="18" color={theme.palette.primary.main} />
+                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                   +971 56 863 8858
                 </Typography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                <Icon icon="mdi:web" width="18" style={{ color: '#3b82f6' }} />
-                <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.6)' }}>
+                <Icon icon="mdi:web" width="18" color={theme.palette.primary.main} />
+                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                   www.itgllc.ae
                 </Typography>
               </Box>
@@ -193,9 +199,8 @@ export default function Footer() {
           </Grid>
         </Grid>
 
-        <Divider sx={{ bgcolor: 'rgba(255,255,255,0.1)', mb: 3 }} />
+        <Divider sx={{ mb: 3 }} />
 
-        {/* Copyright */}
         <Box
           sx={{
             display: 'flex',
@@ -205,16 +210,16 @@ export default function Footer() {
             gap: 2,
           }}
         >
-          <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.5)' }}>
+          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
             © {new Date().getFullYear()} Astaric by ITG. All rights reserved.
           </Typography>
           <Stack direction="row" spacing={3}>
             <Typography
               variant="body2"
               sx={{
-                color: 'rgba(255,255,255,0.5)',
+                color: 'text.secondary',
                 cursor: 'pointer',
-                '&:hover': { color: '#3b82f6' },
+                '&:hover': { color: 'primary.main' },
               }}
             >
               Terms
@@ -222,9 +227,9 @@ export default function Footer() {
             <Typography
               variant="body2"
               sx={{
-                color: 'rgba(255,255,255,0.5)',
+                color: 'text.secondary',
                 cursor: 'pointer',
-                '&:hover': { color: '#3b82f6' },
+                '&:hover': { color: 'primary.main' },
               }}
             >
               Privacy
@@ -232,9 +237,9 @@ export default function Footer() {
             <Typography
               variant="body2"
               sx={{
-                color: 'rgba(255,255,255,0.5)',
+                color: 'text.secondary',
                 cursor: 'pointer',
-                '&:hover': { color: '#3b82f6' },
+                '&:hover': { color: 'primary.main' },
               }}
             >
               Cookies

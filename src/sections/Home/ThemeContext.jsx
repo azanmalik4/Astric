@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useState, useMemo, useEffect } from 'react';
+import React, { createContext, useContext, useState, useMemo, useEffect, useCallback } from 'react';
 import { createTheme, ThemeProvider as MuiThemeProvider } from '@mui/material';
+import PropTypes from 'prop-types';
 
 const ThemeContext = createContext();
 
@@ -40,14 +41,17 @@ export function ThemeProvider({ children }) {
     localStorage.setItem('themeColorPreset', colorPreset);
   }, [mode, contrast, direction, layout, colorPreset]);
 
-  const colorPresets = {
-    default: { main: '#00d4aa', light: '#4ade80', dark: '#059669' },
-    cyan: { main: '#06b6d4', light: '#22d3ee', dark: '#0891b2' },
-    purple: { main: '#a855f7', light: '#c084fc', dark: '#9333ea' },
-    blue: { main: '#3b82f6', light: '#60a5fa', dark: '#2563eb' },
-    orange: { main: '#f97316', light: '#fb923c', dark: '#ea580c' },
-    red: { main: '#ef4444', light: '#f87171', dark: '#dc2626' },
-  };
+  const colorPresets = useMemo(
+    () => ({
+      default: { main: '#00d4aa', light: '#4ade80', dark: '#059669' },
+      cyan: { main: '#06b6d4', light: '#22d3ee', dark: '#0891b2' },
+      purple: { main: '#a855f7', light: '#c084fc', dark: '#9333ea' },
+      blue: { main: '#3b82f6', light: '#60a5fa', dark: '#2563eb' },
+      orange: { main: '#f97316', light: '#fb923c', dark: '#ea580c' },
+      red: { main: '#ef4444', light: '#f87171', dark: '#dc2626' },
+    }),
+    []
+  );
 
   const theme = useMemo(
     () =>
@@ -69,29 +73,50 @@ export function ThemeProvider({ children }) {
           fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
         },
       }),
-    [mode, contrast, direction, colorPreset]
+    [mode, direction, colorPreset, colorPresets]
   );
 
-  const toggleMode = () => setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
-  const toggleContrast = () => setContrast((prev) => (prev === 'default' ? 'bold' : 'default'));
-  const toggleDirection = () => setDirection((prev) => (prev === 'ltr' ? 'rtl' : 'ltr'));
+  const toggleMode = useCallback(() => {
+    setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
+  }, []);
 
-  const value = {
-    mode,
-    contrast,
-    direction,
-    layout,
-    colorPreset,
-    setMode,
-    setContrast,
-    setDirection,
-    setLayout,
-    setColorPreset,
-    toggleMode,
-    toggleContrast,
-    toggleDirection,
-    colorPresets,
-  };
+  const toggleContrast = useCallback(() => {
+    setContrast((prev) => (prev === 'default' ? 'bold' : 'default'));
+  }, []);
+
+  const toggleDirection = useCallback(() => {
+    setDirection((prev) => (prev === 'ltr' ? 'rtl' : 'ltr'));
+  }, []);
+
+  const value = useMemo(
+    () => ({
+      mode,
+      contrast,
+      direction,
+      layout,
+      colorPreset,
+      setMode,
+      setContrast,
+      setDirection,
+      setLayout,
+      setColorPreset,
+      toggleMode,
+      toggleContrast,
+      toggleDirection,
+      colorPresets,
+    }),
+    [
+      mode,
+      contrast,
+      direction,
+      layout,
+      colorPreset,
+      toggleMode,
+      toggleContrast,
+      toggleDirection,
+      colorPresets,
+    ]
+  );
 
   return (
     <ThemeContext.Provider value={value}>
@@ -99,3 +124,7 @@ export function ThemeProvider({ children }) {
     </ThemeContext.Provider>
   );
 }
+
+ThemeProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};

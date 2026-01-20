@@ -9,7 +9,7 @@ export default function HomeViewPage() {
   return (
     <>
       <Helmet>
-        <title> Astric</title>
+        <title> Astaric</title>
       </Helmet>
 
       <HomeView />

@@ -4,6 +4,7 @@ import MainLayout from 'src/layouts/main';
 
 // import { PATH_AFTER_LOGIN } from 'src/config-global';
 import HomeViewPage from 'src/pages/home';
+import { ThemeProvider } from '../../sections/Home/ThemeContext';
 import { authRoutes } from './auth';
 import { mainRoutes } from './main';
 import { dashboardRoutes } from './dashboard';
@@ -26,9 +27,11 @@ export default function Router() {
     {
       path: '/',
       element: (
-        <MainLayout>
-          <HomeViewPage/>
-        </MainLayout>
+        <ThemeProvider>
+          <MainLayout>
+            <HomeViewPage />
+          </MainLayout>
+        </ThemeProvider>
       ),
     },
 

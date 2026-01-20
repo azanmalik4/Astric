@@ -1,16 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Box,
+  Grid,
+  alpha,
+  Stack,
+  Paper,
+  Slider,
+  Switch,
   Drawer,
+  Divider,
   IconButton,
   Typography,
-  Stack,
-  Switch,
-  Paper,
-  Grid,
-  Slider,
-  Divider,
-  alpha,
 } from '@mui/material';
 import { Icon } from '@iconify/react';
 import { useThemeSettings } from './ThemeContext';
@@ -29,6 +30,7 @@ export default function SettingsDrawer({ open, onClose }) {
     setColorPreset,
     colorPresets,
   } = useThemeSettings();
+
 
   const [fontSize, setFontSize] = React.useState(16);
 
@@ -263,5 +265,11 @@ export default function SettingsDrawer({ open, onClose }) {
         </Box>
       </Box>
     </Drawer>
+
   );
 }
+SettingsDrawer.propTypes = {
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
+
