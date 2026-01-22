@@ -92,11 +92,17 @@ export default function Navbar() {
             variant="outlined"
             onClick={handleSignIn}
             sx={{
-              borderColor: 'primary.main',
-              color: 'primary.main',
+              ml: 1,
+              borderColor: 'divider', 
+              color: 'text.primary',
+              borderRadius: 2,
+              px: 2.5,
+              fontWeight: 500,
+              fontSize: '0.875rem !important', // ADD THIS
               '&:hover': {
                 borderColor: 'primary.main',
-                bgcolor: alpha(theme.palette.primary.main, 0.1),
+                bgcolor: alpha(theme.palette.primary.main, 0.05),
+                color: 'primary.main',
               },
             }}
           >
@@ -105,11 +111,7 @@ export default function Navbar() {
         </ListItem>
 
         <ListItem disablePadding sx={{ mt: 2, px: 2 }}>
-          <Button
-            fullWidth
-            variant="contained"
-            onClick={handleSignUp}
-          >
+          <Button fullWidth variant="contained" onClick={handleSignUp}>
             Sign Up
           </Button>
         </ListItem>

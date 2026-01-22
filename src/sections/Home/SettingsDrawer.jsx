@@ -33,8 +33,6 @@ export default function SettingsDrawer({ open, onClose }) {
     colorPresets,
   } = useThemeSettings();
 
-
-
   const layoutOptions = [
     { value: 'vertical', icon: 'mdi:page-layout-sidebar-left', label: 'Vertical' },
     { value: 'horizontal', icon: 'mdi:page-layout-header', label: 'Horizontal' },
@@ -59,7 +57,13 @@ export default function SettingsDrawer({ open, onClose }) {
         },
       }}
     >
-      <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+      <Box
+        sx={{
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
         <Box
           sx={{
             p: 2.5,
@@ -222,7 +226,7 @@ export default function SettingsDrawer({ open, onClose }) {
                       />
                       <Typography
                         variant="caption"
-                        sx={{ textTransform: 'capitalize', fontWeight: 500 }}
+                        sx={{ textTransform: 'capitalize', fontWeight: 100 }}
                       >
                         {preset.name}
                       </Typography>

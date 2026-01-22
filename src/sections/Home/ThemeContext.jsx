@@ -19,7 +19,7 @@ export function ThemeProvider({ children }) {
   const [direction, setDirection] = useState('ltr');
   const [layout, setLayout] = useState('vertical');
   const [colorPreset, setColorPreset] = useState('blue');
-  const [fontSize, setFontSize] = useState(60);
+  const [fontSize, setFontSize] = useState(14);
 
   useEffect(() => {
     const savedMode = localStorage.getItem('themeMode');
@@ -27,7 +27,7 @@ export function ThemeProvider({ children }) {
     const savedDirection = localStorage.getItem('themeDirection');
     const savedLayout = localStorage.getItem('themeLayout');
     const savedColorPreset = localStorage.getItem('themeColorPreset');
-     const savedFontSize = localStorage.getItem('themeFontSize');
+    const savedFontSize = localStorage.getItem('themeFontSize');
 
     if (savedMode) setMode(savedMode);
     if (savedContrast) setContrast(savedContrast);
@@ -72,7 +72,7 @@ export function ThemeProvider({ children }) {
             primary: mode === 'light' ? '#1e293b' : '#ffffff',
             secondary: mode === 'light' ? 'rgba(0,0,0,0.7)' : 'rgba(255,255,255,0.7)',
           },
-          // ADD THIS - Contrast colors
+          //  Contrast colors
           ...(contrast === 'bold' && {
             background: {
               default: mode === 'light' ? '#f0f0f0' : '#0a0d14',
@@ -87,8 +87,8 @@ export function ThemeProvider({ children }) {
         direction, // This enables RTL
         typography: {
           fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
-          // ADD THIS - Dynamic font sizes
-          fontSize: 14, // Base font size
+          // Dynamic font sizes
+          fontSize: 16, // Base font size
           h1: { fontSize: `${3.5 + (fontSize - 16) * 0.1}rem` },
           h2: { fontSize: `${3 + (fontSize - 16) * 0.08}rem` },
           h3: { fontSize: `${2.5 + (fontSize - 16) * 0.07}rem` },
@@ -104,7 +104,7 @@ export function ThemeProvider({ children }) {
           MuiCssBaseline: {
             styleOverrides: {
               body: {
-                // ADD THIS - Apply font size to body
+                //  Apply font size to body
                 fontSize: `${fontSize}px`,
                 scrollbarColor: mode === 'light' ? '#888 #f1f1f1' : '#555 #2b2b2b',
                 '&::-webkit-scrollbar, & *::-webkit-scrollbar': {
